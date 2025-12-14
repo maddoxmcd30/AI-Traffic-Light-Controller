@@ -1,12 +1,19 @@
 # sumo_env.py
 
-import os
+import os, sys
 import time
 from typing import Optional, Tuple, Dict, Any
 
 import numpy as np
 import gymnasium as gym
 from gymnasium import spaces
+
+import os, sys
+if "SUMO_HOME" in os.environ:
+    tools = os.path.join(os.environ["SUMO_HOME"], "tools")
+    if tools not in sys.path:
+        sys.path.append(tools)
+
 import traci
 
 
