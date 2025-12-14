@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<routes>
+    <!-- Vehicle types per origin: north=red, south=blue, east=green, west=yellow -->
+    <vType id="car_north" accel="2.0" decel="4.5" sigma="0.5" length="5" maxSpeed="13.89" guiShape="passenger" color="1,0,0"/>
+    <vType id="car_south" accel="2.0" decel="4.5" sigma="0.5" length="5" maxSpeed="13.89" guiShape="passenger" color="0,0,1"/>
+    <vType id="car_east"  accel="2.0" decel="4.5" sigma="0.5" length="5" maxSpeed="13.89" guiShape="passenger" color="0,1,0"/>
+    <vType id="car_west"  accel="2.0" decel="4.5" sigma="0.5" length="5" maxSpeed="13.89" guiShape="passenger" color="1,1,0"/>
+
+    <!-- NORTH inbound -->
+    <flow id="n_straight" type="car_north" begin="0" end="3600" probability="0.04"
+          from="north_in" to="south_out" departLane="1" departPos="free" departSpeed="max"/>
+    <flow id="n_right" type="car_north" begin="0" end="3600" probability="0.04"
+          from="north_in" to="east_out"  departLane="0" departPos="free" departSpeed="max"/>
+    <flow id="n_left" type="car_north" begin="0" end="3600" probability="0.04"
+          from="north_in" to="west_out"  departLane="2" departPos="free" departSpeed="max"/>
+
+    <!-- SOUTH inbound -->
+    <flow id="s_straight" type="car_south" begin="0" end="3600" probability="0.04"
+          from="south_in" to="north_out" departLane="1" departPos="free" departSpeed="max"/>
+    <flow id="s_right" type="car_south" begin="0" end="3600" probability="0.04"
+          from="south_in" to="west_out"  departLane="0" departPos="free" departSpeed="max"/>
+    <flow id="s_left" type="car_south" begin="0" end="3600" probability="0.04"
+          from="south_in" to="east_out"  departLane="2" departPos="free" departSpeed="max"/>
+
+    <!-- EAST inbound -->
+    <flow id="e_straight" type="car_east" begin="0" end="3600" probability="0.025"
+          from="east_in" to="west_out"  departLane="1" departPos="free" departSpeed="max"/>
+    <flow id="e_right" type="car_east" begin="0" end="3600" probability="0.025"
+          from="east_in" to="south_out" departLane="0" departPos="free" departSpeed="max"/>
+    <flow id="e_left" type="car_east" begin="0" end="3600" probability="0.025"
+          from="east_in" to="north_out" departLane="2" departPos="free" departSpeed="max"/>
+
+    <!-- WEST inbound -->
+    <flow id="w_straight" type="car_west" begin="0" end="3600" probability="0.025"
+          from="west_in" to="east_out"  departLane="1" departPos="free" departSpeed="max"/>
+    <flow id="w_right" type="car_west" begin="0" end="3600" probability="0.025"
+          from="west_in" to="north_out" departLane="0" departPos="free" departSpeed="max"/>
+    <flow id="w_left" type="car_west" begin="0" end="3600" probability="0.025"
+          from="west_in" to="south_out" departLane="2" departPos="free" departSpeed="max"/>
+</routes>
